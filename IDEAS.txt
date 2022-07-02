@@ -23,7 +23,22 @@ RESTAURANT
 			- Static fields for total orders or inventory?
 			- Create a STL map that stores people's last orders
 			- RAII
+			- Show a vegan-only menu
 	- Draw UML
+		- MVC
+			- Model: Menu
+				- Owns a view
+				- private vector for menu(?)
+			- View: TextView
+				- simply has a print function which takes in a menu and prints it
+				- Maybe a print vegan option which takes in a menu and only prints items with vegan TRUE field
+			- Controller: Controls the experience
+				- (maybe own a menu, or just pass it in'n'out of functions)
+				- methods for order, pay, enter restaurant
+		- Item class (see piece class)
+			- Fields: name, lonePrice, vegan
+		- Main: Instantiate controller and call its 'run' function
+			Pass it cin and cout
 	- Setup VSCode
 	- Start Git project:
 		- Upload to GitHub, then work on it using branches...
