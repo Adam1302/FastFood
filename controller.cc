@@ -23,7 +23,7 @@ void Controller::run() {
 }
 
 void Controller::getOrder(std::vector< int >& order) {
-	int itemNum;
+	int itemNum = -1;
 	int quantity;
 
 	out << endl;
@@ -33,12 +33,50 @@ void Controller::getOrder(std::vector< int >& order) {
 	out << "\t  - Enter '0' was you are done" << endl;
 
 	while (true) {
-		in >> itemNum;
+		while (true) {
+			try {
+				in >> itemNum;
+				if (in.fail()) {
+					throw 1;
+				} else if (itemNum < 0 || itemNum > menu.getMenuSize()) {
+					throw 2;
+				} else {
+					break;
+				}
+			} catch (int err) {
+				if (err == 1) {
+					out << "You must enter an integer. Try again." << endl;
+					cin.clear();
+					cin.ignore(10000, '\n');
+				} else {
+					out << "You must enter an integer between 0 and " << menu.getMenuSize() << ". Try again." << endl;
+				}
+			}
+		}
 
 		if (itemNum == 0) break;
 
-		out << "Quantity: ";
-		in >> quantity;
+		while (true) {
+			try {
+				out << "Quantity: ";
+				in >> quantity;
+				if (in.fail()) {
+					throw 1;
+				} else if (quantity < 0) {
+					throw 2;
+				} else {
+					break;
+				}
+			} catch (int err) {
+				if (err == 1) {
+					out << "You must enter an integer. Try again." << endl;
+					cin.clear();
+					cin.ignore(10000, '\n');
+				} else {
+					out << "You must enter a positive integer. Try again." << endl;
+				}
+			}
+		}
 
 		for (int i = 0; i < quantity; ++i)
 			order.emplace_back(itemNum);
@@ -66,7 +104,7 @@ void Controller::payment(std::vector< int >& order) {
 
 	out << "Total Price: $" << fixed << setprecision(2) << curPrice << endl << endl;
 
-	out << "Enter your tip percentage: ";
+	out << "Enter your tip percentage: %";
 	in >> tipPercentage;
 
 	out << "Tip is " << tipPercentage << "%: $" << curPrice*tipPercentage/100 << endl;

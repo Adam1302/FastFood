@@ -55,3 +55,7 @@ string Menu::getName(int i) {
 double Menu::getPrice(int i) {
 	return menu.at(i - 1)->getPrice();
 }
+
+int Menu::getMenuSize() {
+	return menu.size();
+}

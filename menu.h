@@ -23,7 +23,7 @@ class Menu {
 	
 	std::string getName(int i);
 	double getPrice(int i);
-	
+	int getMenuSize();
 };
 
 #endif
