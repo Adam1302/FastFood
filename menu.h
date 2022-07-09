@@ -6,11 +6,15 @@
 #include <string>
 #include <memory>
 
+/*
 #include "menuViewer.h"
 #include "item.h"
 #include "mains.h"
 #include "sides.h"
 #include "drinks.h"
+*/
+#include "menuViewer.h"
+#include "item.h"
 
 class Menu {
 	std::unique_ptr<MenuViewer> view;

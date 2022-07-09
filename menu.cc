@@ -1,5 +1,9 @@
 #include "menu.h"
 
+#include "mains.h"
+#include "sides.h"
+#include "drinks.h"
+
 using namespace std;
 
 Menu::Menu(): view{new MenuViewer()}, menu{} {

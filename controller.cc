@@ -1,5 +1,4 @@
-#include <iostream>
-
+#include <iomanip>
 #include "controller.h"
 
 using namespace std;
@@ -97,14 +96,14 @@ void Controller::payment(std::vector< int >& order) {
 
 	out << endl << "Your order is:" << endl;
 	menu.print(out, order);
-	out << setw(21) << "Total: $" << fixed << setprecision(2) << curPrice << endl;
+	out << std::setw(21) << "Total: $" << fixed << setprecision(2) << curPrice << endl;
 
 	out << endl << "Ontario Tax Rate is 13%: $" << fixed << setprecision(2) << curPrice*0.13 << endl;
 	curPrice *= 1.13;
 
 	out << "Total Price: $" << fixed << setprecision(2) << curPrice << endl << endl;
 
-	out << "Enter your tip percentage: %";
+	out << "Enter your tip percentage: (in %)";
 	in >> tipPercentage;
 
 	out << "Tip is " << tipPercentage << "%: $" << curPrice*tipPercentage/100 << endl;
